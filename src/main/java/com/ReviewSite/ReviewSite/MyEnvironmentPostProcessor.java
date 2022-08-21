@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.util.Assert;
 
@@ -18,7 +19,8 @@ public class MyEnvironmentPostProcessor implements EnvironmentPostProcessor {
 
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
-        Resource path = new ClassPathResource("com/ReviewSite/ReviewSite/config.yml");
+        //Resource path = new ClassPathResource("com/ReviewSite/ReviewSite/config.yml");
+        Resource path = new FileSystemResource("./config.yml");
         PropertySource<?> propertySource = loadYaml(path);
         environment.getPropertySources().addLast(propertySource);
     }
