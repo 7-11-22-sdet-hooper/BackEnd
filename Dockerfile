@@ -5,4 +5,5 @@ ARG JAR_FILE=target/*.jar
 ARG CONFIG_FILE=config.yml
 COPY ${JAR_FILE} app.jar
 COPY ${CONFIG_FILE} config.yml
+EXPOSE 8081
 ENTRYPOINT ["java","-jar","/app.jar"]
