@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ReviewSite.ReviewSite.model.Vocab;
 import com.ReviewSite.ReviewSite.repositories.VocabRepository;
-@RequestMapping("/vocab")
+@RequestMapping("api/vocab")
 @RestController
 public class VocabController {
 	VocabRepository vocabRepo;
