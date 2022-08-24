@@ -45,13 +45,9 @@ public class QuizController {
 
     @RequestMapping("/{id}")
     public QuizQuestion question(@PathVariable long id) {
-
         Optional<MultipleChoice> quizOpt = quizRepo.findById(id);
         MultipleChoice question = quizOpt.get();
-
         return QuizQuestion.convertQuestion(question);
-
-
     }
 }
 

@@ -22,15 +22,15 @@ public class WebSecurityConfig{
 	@Bean
 	protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
 
-		//http.authorizeRequests()
-				//.antMatchers("/sign-up/**", "/sign-in/**")
-				//.permitAll()
-				//.anyRequest()
-				//.authenticated()
-				//.and()
-				//.formLogin()
-				//.loginPage("/sign-in")
-				//.permitAll();
+		http.authorizeRequests()
+				.antMatchers("/sign-up/**", "/sign-in/**","/**")
+				.permitAll()
+				.anyRequest()
+				.authenticated()
+				.and()
+				.formLogin()
+				.loginPage("/sign-in")
+				.permitAll();
         return http.build();
 
 	}
