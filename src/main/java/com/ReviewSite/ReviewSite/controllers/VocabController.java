@@ -2,21 +2,25 @@ package com.ReviewSite.ReviewSite.controllers;
 
 import java.util.Optional;
 
-import org.springframework.stereotype.Controller;
+import com.ReviewSite.ReviewSite.model.Category;
+import com.ReviewSite.ReviewSite.model.Vocab;
+import com.ReviewSite.ReviewSite.repositories.CategoryRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ReviewSite.ReviewSite.model.Vocab;
+import com.ReviewSite.ReviewSite.model.MultipleChoice;
 import com.ReviewSite.ReviewSite.repositories.VocabRepository;
-@RequestMapping("/vocab")
+@RequestMapping("api/vocab")
 @RestController
 public class VocabController {
 	VocabRepository vocabRepo;
-	
-	public VocabController(VocabRepository vocabRepo) {
+	CategoryRepository categoryRepo;
+
+	public VocabController(VocabRepository vocabRepo, CategoryRepository categoryRepo) {
 		this.vocabRepo = vocabRepo;
+		this.categoryRepo = categoryRepo;
 	}
 
 	@GetMapping("")
@@ -29,7 +33,8 @@ public class VocabController {
 	}
 	@GetMapping("category/{category}")
 	public Iterable<Vocab> getVocabByCategory(@PathVariable String category){
-		return vocabRepo.findByCategory(category).get();
+		Category cat = categoryRepo.findByName(category).get();
+		return vocabRepo.findByCategory(cat);
 	}
 	@GetMapping("/{id}")
 	public Vocab getVocabByID(@PathVariable long id){
