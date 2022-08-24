@@ -4,20 +4,25 @@ import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 @Entity
 public class Vocab {
-public String category;
+
 public String word;
-public String wordDefinition;
+public String definition;
+
+@ManyToOne
+public Category category;
 
 @Id
 @GeneratedValue
-public long vocab_id;
-public Vocab(String category, String word, String wordDefinition) {
-	
+public long id;
+public Vocab(Category category, String word, String definition) {
 	this.category = category;
 	this.word = word;
-	this.wordDefinition = wordDefinition;
+	this.definition = definition;
 }
 public Vocab() {
 }

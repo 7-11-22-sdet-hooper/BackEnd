@@ -1,18 +1,15 @@
 package com.ReviewSite.ReviewSite.repositories;
 
 import com.ReviewSite.ReviewSite.model.Category;
-import com.ReviewSite.ReviewSite.model.Vocab;
 import org.springframework.data.repository.CrudRepository;
 
-import com.ReviewSite.ReviewSite.model.MultipleChoice;
-
-import java.util.Collection;
+import java.util.Optional;
 
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete
 
-public interface VocabRepository extends CrudRepository<Vocab, Long> {
+public interface CategoryRepository extends CrudRepository<Category, Long> {
 
-        Collection<Vocab> findByCategory(Category category);
+    Optional<Category> findByName(String name);
 }
