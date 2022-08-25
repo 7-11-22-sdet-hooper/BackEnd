@@ -1,13 +1,13 @@
-package com.ReviewSite.ReviewSite;
+// package com.ReviewSite.ReviewSite;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class ReviewSiteApplicationTests {
+// @SpringBootTest
+// class ReviewSiteApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }

@@ -32,3 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 /bin/
+
+config.yml
+
+### Nathan ###
+!.issues/
