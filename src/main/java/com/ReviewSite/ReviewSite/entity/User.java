@@ -20,7 +20,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+//creates an entity of a user and the parameters it has
 @Getter
 @Setter
 @Builder
@@ -58,7 +58,7 @@ public class User implements UserDetails {
 		final SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(userRole.name());
 		return Collections.singletonList(simpleGrantedAuthority);
 	}
-
+	//getters and setters for User variables
 	@Override
 	public String getPassword() {
 		return password;

@@ -18,45 +18,47 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
+//Allows program to fetch users from the repository
 public class UserService implements UserDetailsService {
 
-		private final UserRepository userRepository;
-        private final ConfirmationTokenService confirmationTokenService;
+    private final UserRepository userRepository;
+    private final ConfirmationTokenService confirmationTokenService;
+    
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-		@Override
-		public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        final Optional<User> optionalUser = userRepository.findByEmail(email);
 
-			final Optional<User> optionalUser = userRepository.findByEmail(email);
+        if (optionalUser.isPresent()) {
+            return optionalUser.get();
+        }
+        else {
+            throw new UsernameNotFoundException(MessageFormat.format("User with email {0} cannot be found.", email));
+        }
+    }
+    //signs up user
+    void signUpUser(User user) {
 
-			if (optionalUser.isPresent()) {
-				return optionalUser.get();
-			}
-			else {
-				throw new UsernameNotFoundException(MessageFormat.format("User with email {0} cannot be found.", email));
-			}
-		}
-        void signUpUser(User user) {
+        final String encryptedPassword = WebSecurityConfig.passwordEncoder().encode(user.getPassword());
+    
+        user.setPassword(encryptedPassword);
+    
+        final User createdUser = userRepository.save(user);
+    
+        final ConfirmationToken confirmationToken = new ConfirmationToken(user);
+    
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+    
+    }
+    void confirmUser(ConfirmationToken confirmationToken) {
 
-            final String encryptedPassword = WebSecurityConfig.passwordEncoder().encode(user.getPassword());
+        final User user = confirmationToken.getUser();
         
-            user.setPassword(encryptedPassword);
+        user.setEnabled(true);
         
-            final User createdUser = userRepository.save(user);
+        userRepository.save(user);
         
-            final ConfirmationToken confirmationToken = new ConfirmationToken(user);
-        
-            confirmationTokenService.saveConfirmationToken(confirmationToken);
+        confirmationTokenService.deleteConfirmationToken(confirmationToken.getId());
         
         }
-        void confirmUser(ConfirmationToken confirmationToken) {
-
-            final User user = confirmationToken.getUser();
-          
-            user.setEnabled(true);
-          
-            userRepository.save(user);
-          
-            confirmationTokenService.deleteConfirmationToken(confirmationToken.getId());
-          
-          }
 }
