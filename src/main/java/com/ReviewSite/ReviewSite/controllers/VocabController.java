@@ -36,6 +36,7 @@ public class VocabController {
 		Category cat = categoryRepo.findByName(category).get();
 		return vocabRepo.findByCategory(cat);
 	}
+	//TODO: should throw an error if id is not present in the database.
 	@GetMapping("/{id}")
 	public Vocab getVocabByID(@PathVariable long id){
 		Optional<Vocab> wordOpt=vocabRepo.findById(id);

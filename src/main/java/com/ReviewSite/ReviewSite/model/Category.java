@@ -6,8 +6,8 @@ import java.util.Collection;
 
 @Entity
 public class Category {
-    @Id
-    @GeneratedValue
+
+	@Id
     public long id;
     
     public String name;

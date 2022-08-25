@@ -23,7 +23,7 @@ public String d;
 public String correctAnswer;
 
 
-public MultipleChoice(Category category, String question, String wordDefinition, String a, String b, String c, String d,
+public MultipleChoice(Category category, String question, String a, String b, String c, String d,
 					  String correctAnswer) {
 	this.category = category;
 	this.question = question;

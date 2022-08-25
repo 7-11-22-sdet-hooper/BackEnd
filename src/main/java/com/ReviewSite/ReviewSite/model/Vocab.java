@@ -7,25 +7,27 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
 @Entity
 public class Vocab {
 
-public String word;
-public String definition;
+	@Id
+	@GeneratedValue
+	public long id;
 
-@ManyToOne
-public Category category;
+	public String word;
+	public String definition;
 
-@Id
-@GeneratedValue
-public long id;
-public Vocab(Category category, String word, String definition) {
-	this.category = category;
-	this.word = word;
-	this.definition = definition;
-}
-public Vocab() {
-}
+	@ManyToOne
+	public Category category; // should this be a category or perhaps just a string?
 
+	public Vocab(Category category, String word, String definition) {
+		this.category = category;
+		this.word = word;
+		this.definition = definition;
+	}
+
+	public Vocab() {
+	}
 
 }
