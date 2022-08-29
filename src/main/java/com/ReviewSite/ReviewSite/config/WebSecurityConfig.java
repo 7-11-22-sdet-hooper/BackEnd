@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.ReviewSite.ReviewSite.entity.User;
 import com.ReviewSite.ReviewSite.user.UserService;
 
 import lombok.AllArgsConstructor;
@@ -23,14 +24,15 @@ public class WebSecurityConfig{
 	protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         //redirects users to a sign up if they don't have access
 		http.authorizeRequests()
-				.antMatchers("/sign-up/**", "/sign-in/**","/**")
-				.permitAll()
-				.anyRequest()
-				.authenticated()
-				.and()
-				.formLogin()
-				.loginPage("/sign-in")
-				.permitAll();
+			.antMatchers("/api/vocab/1/").hasRole("User")
+			.antMatchers("/sign-up/**", "/sign-in/**","/**")
+			.permitAll()
+			.anyRequest()
+			.authenticated()
+			.and()
+			.formLogin()
+			.loginPage("/sign-in")
+			.permitAll();
         return http.build();
 
 	}
