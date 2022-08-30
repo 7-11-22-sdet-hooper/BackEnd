@@ -8,7 +8,7 @@ Spring boot project with a RESTful API and a MySQL DB
 
 #### Get category
 
-`http
+`
   GET /api/vocab/category/{category}
 `
 
@@ -18,7 +18,7 @@ Spring boot project with a RESTful API and a MySQL DB
 
 #### Get id
 
-```http
+```
   GET /api/vocab/${id}
 ```
 
@@ -28,7 +28,7 @@ Spring boot project with a RESTful API and a MySQL DB
 
 #### Get vocab
 
-```http
+```
   GET /api/vocab
 ```
 
@@ -38,7 +38,7 @@ Spring boot project with a RESTful API and a MySQL DB
 
 #### Get id
 
-```http
+```
   GET /api/${id}
 ```
 
