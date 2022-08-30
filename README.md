@@ -8,9 +8,9 @@ Spring boot project with a RESTful API and a MySQL DB
 
 #### Get category
 
-`
+```
   GET /api/vocab/category/{category}
-`
+```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
