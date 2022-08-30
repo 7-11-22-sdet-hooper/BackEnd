@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ReviewSite.ReviewSite.model.MultipleChoice;
 import com.ReviewSite.ReviewSite.repositories.VocabRepository;
+//Request mapping assigns the extensions of the site and haves the api of vocab into api/vocab
 @RequestMapping("api/vocab")
 @RestController
 public class VocabController {
@@ -31,11 +32,13 @@ public class VocabController {
 		
 		return vocabRepo.findAll();
 	}
+	//finds all the questions that fits into said {category} and returns them on the page
 	@GetMapping("category/{category}")
 	public Iterable<Vocab> getVocabByCategory(@PathVariable String category){
 		Category cat = categoryRepo.findByName(category).get();
 		return vocabRepo.findByCategory(cat);
 	}
+	//returns a singular question by its [id]
 	@GetMapping("/{id}")
 	public Vocab getVocabByID(@PathVariable long id){
 		Optional<Vocab> wordOpt=vocabRepo.findById(id);

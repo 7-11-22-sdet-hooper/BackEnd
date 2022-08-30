@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 @Entity
+//This is the data structure of a vocabulary word. It holds the word, definition, 
+//category, and id of a vocabulary word.
 public class Vocab {
 
 public String word;

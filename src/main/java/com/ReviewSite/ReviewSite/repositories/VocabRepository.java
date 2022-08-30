@@ -9,7 +9,7 @@ import com.ReviewSite.ReviewSite.model.MultipleChoice;
 import java.util.Collection;
 
 
-// This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
+// This will be AUTO IMPLEMENTED by Spring into a Bean called vocabRepository
 // CRUD refers Create, Read, Update, Delete
 
 public interface VocabRepository extends CrudRepository<Vocab, Long> {
